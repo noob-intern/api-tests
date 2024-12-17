@@ -16,7 +16,7 @@ app.get("/users", (req, res) => {
 
 // READ (GET): Get a single user by ID
 app.get("/users/:id", (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id, 10);
     const user = users.find(u => u.id === id);
     if (user) {
         res.status(200).json(user);
@@ -39,7 +39,7 @@ app.post("/users", (req, res) => {
 
 // UPDATE (PUT): Update a user's name by ID
 app.put("/users/:id", (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id, 10);
     const user = users.find(u => u.id === id);
 
     if (!user) {
@@ -57,7 +57,7 @@ app.put("/users/:id", (req, res) => {
 
 // DELETE (DELETE): Remove a user by ID
 app.delete("/users/:id", (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id, 10);
     const userIndex = users.findIndex(u => u.id === id);
 
     if (userIndex === -1) {
